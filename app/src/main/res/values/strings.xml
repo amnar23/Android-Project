@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">Project</string>
+    <!--Error Messages-->
+    <string name="error_name1">Please Enter a Valid Name</string>
+    <string name="error_email1">Invalid Format</string>
+    <string name="error_email2">Email Required</string>
+    <string name="error_dob1">DOB Required</string>
+    <string name="error_gender1">Gender Required</string>
+    <string name="error_password1">Spaces/Special Characters not allowed</string>
+    <string name="error_password2">Should contain more than 5 characters</string>
+    <string name="error_password3">Password Required</string>
+    <string name="error_time1">Time Required</string>
+    <string name="error_date">Date Required</string>
+    <string name="error_conc">Concentration Required</string>
+    <!--Spinner values-->
+    <string-array name="measured">
+        <item>Fasting</item>
+        <item>After Breakfast</item>
+        <item>Before Lunch</item>
+        <item>After Lunch</item>
+        <item>Before Dinner</item>
+        <item>After Dinner</item>
+        <item>Random</item>
+        <item>Other</item>
+    </string-array>
+
+    <string name="title_activity_home">Diabetes Tracker</string>
+    <string name="tab_text_1">HOME</string>
+    <string name="tab_text_2">MY PROFILE</string>
+    <!--Array for Reminder Spinner-->
+    <string-array name="field">
+        <item>Check Blood Sugar</item>
+        <item>Check Weight</item>
+        <item>Take Medicine</item>
+    </string-array>
+</resources>

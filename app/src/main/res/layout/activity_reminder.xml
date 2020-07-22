@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg2"
+    tools:context=".Reminder">
+
+    <TextView
+        android:id="@+id/Set"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="Reminder for"
+        android:textStyle="bold"></TextView>
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinner"
+        android:layout_below="@id/Set"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"></Spinner>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Set Time"
+        android:id="@+id/ttime"
+        android:layout_below="@id/spinner"
+        android:textStyle="bold"
+        android:layout_centerInParent="true"></TextView>
+    <TimePicker
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/time"
+        android:layout_below="@id/ttime"
+        android:layout_centerInParent="true"
+        android:numbersTextColor="@color/cardview_light_background"
+        android:timePickerMode="clock"
+        android:numbersSelectorColor="@color/cardview_dark_background"
+        android:numbersBackgroundColor="@color/design_default_color_error"
+        android:layout_margin="20dp"></TimePicker>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="set reminder"
+        android:textSize="15dp"
+        android:layout_below="@id/time"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="55dp"
+        android:layout_marginLeft="55dp"
+        android:textColor="@android:color/white"
+        android:background="@drawable/stroke"
+        android:padding="15dp"
+        android:onClick="setReminder"/>
+
+</RelativeLayout>
