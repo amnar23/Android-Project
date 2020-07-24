@@ -41,8 +41,8 @@ public class HomeFragment extends Fragment {
         b3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              //  Intent i = new Intent(getActivity(), WeightLog.class);
-                //startActivity(i);
+               Intent i = new Intent(getActivity(), WeightLog.class);
+               startActivity(i);
             }
         });
         return v;

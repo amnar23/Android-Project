@@ -11,7 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SugarLog"></activity>
+        <activity android:name=".WeightLog"></activity>
+        <activity android:name=".EnterWeight" />
+        <activity android:name=".SugarLog" />
         <activity android:name=".EditProfile" />
         <activity android:name=".Reminder" />
         <activity

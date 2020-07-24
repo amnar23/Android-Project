@@ -106,13 +106,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             Log.d("TAG",e.getMessage());
         }
         if(cursorcount>0)
-        {
             return true;
-        }
         else
-        {
             return false;
-        }
+
    }
    public boolean checkUser(String email,String password)
    {
@@ -237,7 +234,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return sugarEntries;
     }
-    public boolean deleteRecord(String email,String id)
+    public boolean deleteSugarRecord(String email,String id)
     {
         SQLiteDatabase db=this.getWritableDatabase();
         String where=DatabaseContract.SugarTable.COL_EMAIL+" =? "+" AND "+DatabaseContract.SugarTable._ID+" =? ";
@@ -270,6 +267,92 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         try
         {
             db.update(DatabaseContract.SugarTable.TABLE_NAME,values,selection,selectionArgs);
+            db.close();
+            return true;
+        }catch (SQLiteException e)
+        {
+            Log.d("TAG",e.getMessage());
+            return false;
+        }
+    }
+    //Weight
+    public boolean addWeight(Weight weight)
+    {
+        SQLiteDatabase db=this.getWritableDatabase();
+        ContentValues values=new ContentValues();
+        values.put(DatabaseContract.WeightTable.COL_WEIGHT,weight.getWeight());
+        values.put(DatabaseContract.WeightTable.COL_DATE,weight.getDate());
+        values.put(DatabaseContract.WeightTable.COL_TIME,weight.getTime());
+        values.put(DatabaseContract.WeightTable.COL_EMAIL,weight.getEmail());
+        long rowId=0;
+        try{
+            rowId=db.insert(DatabaseContract.WeightTable.TABLE_NAME,null,values);
+        }catch (SQLiteException e)
+        {
+            Log.d("TAG",e.getMessage());
+        }
+        if(rowId<0)
+            return false;
+        return true;
+    }
+    public ArrayList<Weight> getWeightEntries(String email)
+    {
+        SQLiteDatabase db=this.getWritableDatabase();
+        String selection=DatabaseContract.WeightTable.COL_EMAIL+" = ?";
+        String[] selectionArgs={email};
+        String order=DatabaseContract.WeightTable._ID+" DESC";
+        int i=0;
+        ArrayList<Weight> weightEntries=new ArrayList<>();
+        try{
+            Cursor cursor=db.query(DatabaseContract.WeightTable.TABLE_NAME,null,selection,selectionArgs,null,null,order);
+            while(cursor.moveToNext())
+            {
+                Weight weight=new Weight();
+                weight.setId(cursor.getInt(0));
+                weight.setWeight(cursor.getDouble(1));
+                weight.setDate(cursor.getString(2));
+                weight.setTime(cursor.getString(3));
+                weight.setEmail(cursor.getString(4));
+                weightEntries.add(weight);
+            }
+        }catch (SQLiteException e)
+        {
+            Log.d("TAG",e.getMessage());
+        }
+        return weightEntries;
+    }
+    public boolean deleteWeightRecord(String email,String id)
+    {
+        SQLiteDatabase db=this.getWritableDatabase();
+        String where=DatabaseContract.WeightTable.COL_EMAIL+" =? "+" AND "+DatabaseContract.WeightTable._ID+" =? ";
+        String[] selectionArgs={email,id};
+        Log.d("TAG",email);
+        Log.d("TAG",id);
+        int i=0;
+        try{
+            i=db.delete(DatabaseContract.WeightTable.TABLE_NAME,where,selectionArgs);
+            Log.d("TAG",String.valueOf(i));
+        }catch(SQLiteException e)
+        {
+            Log.d("TAG",e.getMessage());
+        }
+
+        if(i>0)
+            return true;
+        return false;
+    }
+    public boolean updateWeight(Weight weight)
+    {
+        SQLiteDatabase db=this.getWritableDatabase();
+        ContentValues values=new ContentValues();
+        values.put(DatabaseContract.WeightTable.COL_WEIGHT,weight.getWeight());
+        values.put(DatabaseContract.WeightTable.COL_DATE,weight.getDate());
+        values.put(DatabaseContract.WeightTable.COL_TIME,weight.getTime());
+        String selection=DatabaseContract.WeightTable._ID+" =?";
+        String[] selectionArgs={String.valueOf(weight.getId())};
+        try
+        {
+            db.update(DatabaseContract.WeightTable.TABLE_NAME,values,selection,selectionArgs);
             db.close();
             return true;
         }catch (SQLiteException e)

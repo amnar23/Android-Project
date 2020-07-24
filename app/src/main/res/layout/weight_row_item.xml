@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:columnCount="2"
+    android:rowCount="2">
+        <TextView
+            android:layout_gravity="center"
+            android:paddingLeft="50dp"
+            android:id="@+id/date"
+            android:background="@color/design_default_color_error"
+            android:textColor="@color/cardview_light_background"
+            android:layout_height="wrap_content"
+            android:layout_width="180dp"
+            android:textStyle="bold"></TextView>
+
+        <TextView
+            android:layout_gravity="center"
+            android:id="@+id/time"
+            android:background="@color/design_default_color_error"
+            android:textColor="@color/cardview_light_background"
+            android:layout_height="wrap_content"
+            android:layout_width="235dp"
+            android:textStyle="bold"
+            ></TextView>
+    <TextView
+        android:id="@+id/weight"
+        android:layout_columnSpan="2"
+        android:layout_width="match_parent"
+        android:layout_gravity="center"
+        android:textColor="@color/design_default_color_error"
+        android:textStyle="bold"></TextView>
+
+
+</GridLayout>

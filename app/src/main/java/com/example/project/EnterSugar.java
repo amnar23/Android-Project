@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -50,6 +51,8 @@ public class EnterSugar extends AppCompatActivity implements AdapterView.OnItemS
         if(i.hasExtra("conc"))
         {
             updateSugar();
+            ImageView img=findViewById(R.id.image);
+            img.setImageResource(R.drawable.weightentry);
         }
     }
 

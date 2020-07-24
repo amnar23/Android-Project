@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SugarLog">
+    tools:context=".WeightLog">
     <ListView
         android:background="@drawable/bg2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/sugarList"></ListView>
+        android:id="@+id/weightList"></ListView>
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -17,6 +17,6 @@
         android:layout_margin="@dimen/fab_margin"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:id="@+id/sugarfab"
+        android:id="@+id/weightfab"
         android:src="@drawable/fab_add"></com.google.android.material.floatingactionbutton.FloatingActionButton>
 </RelativeLayout>

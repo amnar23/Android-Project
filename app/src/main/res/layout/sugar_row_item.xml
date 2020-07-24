@@ -19,8 +19,9 @@
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:textStyle="bold"></TextView>
+
         <TextView
-            android:layout_gravity="center"
+            android:layout_gravity="right"
             android:id="@+id/time"
             android:background="@color/design_default_color_error"
             android:textColor="@color/cardview_light_background"

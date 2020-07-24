@@ -12,6 +12,8 @@
     <string name="error_time1">Time Required</string>
     <string name="error_date">Date Required</string>
     <string name="error_conc">Concentration Required</string>
+    <string name="error_weight1">Weight Required</string>
+    <string name="error_weight2">Enter Valid Weight</string>
     <!--Spinner values-->
     <string-array name="measured">
         <item>Fasting</item>
