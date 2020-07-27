@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorAccent">
+    <GridLayout
+        android:columnCount="2"
+        android:rowCount="2"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:layout_centerInParent="true"
+        android:layout_margin="10dp"
+        android:background="@color/cardview_light_background">
+        <TextView
+            android:id="@+id/med"
+            android:layout_gravity="center"
+            android:text="Medcicine"></TextView>
+        <TextView
+            android:layout_gravity="center"
+            android:id="@+id/dos"></TextView>
+        <TextView
+            android:layout_gravity="center"
+            android:id="@+id/date"></TextView>
+        <TextView
+            android:layout_gravity="center"
+            android:id="@+id/time"></TextView>
+    </GridLayout>
+
+</RelativeLayout>

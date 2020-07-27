@@ -32,8 +32,8 @@ public class HomeFragment extends Fragment {
         b2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               // Intent i = new Intent(getActivity(), MedLog.class);
-                //startActivity(i);
+                Intent i = new Intent(getActivity(), MedicationLog.class);
+                startActivity(i);
             }
         });
 

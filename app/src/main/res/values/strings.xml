@@ -10,10 +10,14 @@
     <string name="error_password2">Should contain more than 5 characters</string>
     <string name="error_password3">Password Required</string>
     <string name="error_time1">Time Required</string>
+    <string name="error_time2">Invalid Format</string>
     <string name="error_date">Date Required</string>
+    <string name="error_date2">Invalid Format</string>
     <string name="error_conc">Concentration Required</string>
     <string name="error_weight1">Weight Required</string>
     <string name="error_weight2">Enter Valid Weight</string>
+    <string name="error_med">Medication Name Required</string>
+    <string name="error_dos">Dosage Required</string>
     <!--Spinner values-->
     <string-array name="measured">
         <item>Fasting</item>
@@ -34,5 +38,10 @@
         <item>Check Blood Sugar</item>
         <item>Check Weight</item>
         <item>Take Medicine</item>
+    </string-array>
+    <string-array name="unit">
+        <item>mg</item>
+        <item>mL</item>
+        <item>Tablet</item>
     </string-array>
 </resources>

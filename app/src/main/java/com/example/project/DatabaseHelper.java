@@ -301,7 +301,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String selection=DatabaseContract.WeightTable.COL_EMAIL+" = ?";
         String[] selectionArgs={email};
         String order=DatabaseContract.WeightTable._ID+" DESC";
-        int i=0;
         ArrayList<Weight> weightEntries=new ArrayList<>();
         try{
             Cursor cursor=db.query(DatabaseContract.WeightTable.TABLE_NAME,null,selection,selectionArgs,null,null,order);
@@ -353,6 +352,101 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         try
         {
             db.update(DatabaseContract.WeightTable.TABLE_NAME,values,selection,selectionArgs);
+            db.close();
+            return true;
+        }catch (SQLiteException e)
+        {
+            Log.d("TAG",e.getMessage());
+            return false;
+        }
+    }
+    //Medication
+    public boolean addMedication(Medication med)
+    {
+        long row=0;
+        SQLiteDatabase db=this.getWritableDatabase();
+        ContentValues values=new ContentValues();
+        values.put(DatabaseContract.MedicationsTable.COL_MEDNAME,med.getMedication());
+        values.put(DatabaseContract.MedicationsTable.COL_DOSGAE,med.getDosage());
+        values.put(DatabaseContract.MedicationsTable.COL_UNIT,med.getUnit());
+        values.put(DatabaseContract.MedicationsTable.COL_DATE,med.getDate());
+        values.put(DatabaseContract.MedicationsTable.COL_TIME,med.getTime());
+        values.put(DatabaseContract.MedicationsTable.COL_EMAIL,med.getEmail());
+        try{
+            row=db.insert(DatabaseContract.MedicationsTable.TABLE_NAME,null,values);
+        }
+        catch(SQLiteException e)
+        {
+            Log.d("TAG",e.getMessage());
+        }
+        if(row==-1)
+            return false;
+        else
+            return true;
+    }
+    public ArrayList<Medication> getMedicEntries(String email)
+    {
+        SQLiteDatabase db=this.getWritableDatabase();
+        String selection=DatabaseContract.MedicationsTable.COL_EMAIL+" = ?";
+        String[] selectionArgs={email};
+        String order=DatabaseContract.MedicationsTable._ID+" DESC";
+        ArrayList<Medication> medEntries=new ArrayList<>();
+        try{
+            Cursor cursor=db.query(DatabaseContract.MedicationsTable.TABLE_NAME,null,selection,selectionArgs,null,null,order);
+            while(cursor.moveToNext())
+            {
+                Medication med=new Medication();
+                med.setId(cursor.getInt(0));
+                med.setMedication(cursor.getString(1));
+                med.setDosage(cursor.getDouble(2));
+                med.setUnit(cursor.getString(3));
+                med.setDate(cursor.getString(4));
+                med.setTime(cursor.getString(5));
+                med.setEmail(cursor.getString(6));
+                medEntries.add(med);
+            }
+            Log.d("TAG",String.valueOf(cursor.getCount()));
+        }catch (SQLiteException e)
+        {
+            Log.d("TAG",e.getMessage());
+        }
+
+        return medEntries;
+    }
+    public boolean deleteMedRecord(String email,String id)
+    {
+        SQLiteDatabase db=this.getWritableDatabase();
+        String where=DatabaseContract.MedicationsTable.COL_EMAIL+" =? "+" AND "+DatabaseContract.MedicationsTable._ID+" =? ";
+        String[] selectionArgs={email,id};
+        Log.d("TAG",email);
+        Log.d("TAG",id);
+        int i=0;
+        try{
+            i=db.delete(DatabaseContract.MedicationsTable.TABLE_NAME,where,selectionArgs);
+            Log.d("TAG",String.valueOf(i));
+        }catch(SQLiteException e)
+        {
+            Log.d("TAG",e.getMessage());
+        }
+
+        if(i>0)
+            return true;
+        return false;
+    }
+    public boolean updateMed(Medication med)
+    {
+        SQLiteDatabase db=this.getWritableDatabase();
+        ContentValues values=new ContentValues();
+        values.put(DatabaseContract.MedicationsTable.COL_MEDNAME,med.getMedication());
+        values.put(DatabaseContract.MedicationsTable.COL_DATE,med.getDate());
+        values.put(DatabaseContract.MedicationsTable.COL_TIME,med.getTime());
+        values.put(DatabaseContract.MedicationsTable.COL_DOSGAE,med.getDosage());
+        values.put(DatabaseContract.MedicationsTable.COL_UNIT,med.getUnit());
+        String selection=DatabaseContract.MedicationsTable._ID+" =?";
+        String[] selectionArgs={String.valueOf(med.getId())};
+        try
+        {
+            db.update(DatabaseContract.MedicationsTable.TABLE_NAME,values,selection,selectionArgs);
             db.close();
             return true;
         }catch (SQLiteException e)

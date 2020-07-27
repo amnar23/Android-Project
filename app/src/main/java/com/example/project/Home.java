@@ -55,8 +55,8 @@ public class Home extends AppCompatActivity {
         fab2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               // Intent i = new Intent(Home.this, WeightEntry.class);
-                //startActivity(i);
+                Intent i = new Intent(Home.this, EnterWeight.class);
+                startActivity(i);
             }
         });
 
@@ -64,8 +64,8 @@ public class Home extends AppCompatActivity {
         fab3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-             //   Intent i = new Intent(Home.this, MedEntry.class);
-               // startActivity(i);
+                Intent i = new Intent(Home.this, EnterMedication.class);
+                startActivity(i);
             }
         });
 
